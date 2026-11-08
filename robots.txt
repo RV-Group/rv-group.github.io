@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /favicon.ico$
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: YandexFavicons
+Allow: /favicon.ico$
+
+User-agent: Bingbot
+Allow: /
