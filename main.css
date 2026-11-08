@@ -1,0 +1,128 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+}
+.container {
+    background-color: #1e1e1e;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    max-width: 450px;
+    width: 90%;
+    border-top: 4px solid #558b2f;
+}
+h1 {
+    text-align: center;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+.server-info {
+    background-color: #252525;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid #333;
+}
+.server-title {
+    margin: 0 0 15px 0;
+    color: #ffffff;
+    font-size: 18px;
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    text-align: center;
+}
+.server-info p {
+    margin: 12px 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+.server-info p:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.label {
+    color: #9e9e9e;
+    font-weight: 600;
+}
+.value {
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 16px;
+    background-color: #121212;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+.status {
+    color: #ffeb3b;
+    font-weight: bold;
+}
+.status-online {
+    color: #64dd17;
+    font-weight: bold;
+}
+.status-offline {
+    color: #ff5252;
+    font-weight: bold;
+}
+.disclaimer {
+    font-size: 12px;
+    color: #757575;
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+.instructions h2 {
+    font-size: 18px;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+    border-left: 3px solid #558b2f;
+    padding-left: 10px;
+}
+.instructions ol {
+    padding-left: 20px;
+    color: #b0b0b0;
+    line-height: 1.7;
+    font-size: 15px;
+}
+.instructions li::marker {
+    color: #558b2f;
+    font-weight: bold;
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: 14px 0;
+    background-color: #558b2f;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-top: 30px;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #33691e;
+}
+.btn:active {
+    transform: scale(0.98);
+}
