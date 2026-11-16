@@ -28,8 +28,18 @@ const servers = [
 async function checkAllServers() {
     for (const server of servers) {
         const container = document.getElementById(server.id);
+        if (!container) continue;
+
         const statusElement = container.querySelector('.status-val');
         const pingElement = container.querySelector('.ping-val');
+        if (!statusElement || !pingElement) continue;
+
+        const controller = new AbortController();
+        let isTimeout = false;
+        const timeout = setTimeout(() => {
+            isTimeout = true;
+            controller.abort();
+        }, 5000);
 
         statusElement.textContent = 'Checking...';
         statusElement.className = 'status-val status';
@@ -37,7 +47,7 @@ async function checkAllServers() {
         try {
             const startTime = performance.now();
             
-            const response = await fetch(server.relay, { cache: "no-store" });
+            const response = await fetch(server.relay, { cache: "no-store", signal: controller.signal });
             
             const endTime = performance.now();
             
@@ -63,13 +73,15 @@ async function checkAllServers() {
                     pingElement.className = 'ping-val status-offline';
                 }
             } else {
-                throw new Error();
+                throw new Error('HTTP ' + response.status);
             }
         } catch (error) {
             statusElement.textContent = 'Offline';
             statusElement.className = 'status-val status-offline';
-            pingElement.textContent = 'Timeout';
+            pingElement.textContent = isTimeout ? 'Timeout' : 'Error';
             pingElement.className = 'ping-val status-offline';
+        } finally {
+            clearTimeout(timeout);
         }
         
         await new Promise(resolve => setTimeout(resolve, 300));
@@ -77,8 +89,13 @@ async function checkAllServers() {
 }
 
 async function startMonitoring() {
-    await checkAllServers();
-    setTimeout(startMonitoring, 15000);
+    try {
+        await checkAllServers();
+    } catch (error) {
+        console.error('Monitoring error:', error);
+    } finally {
+        setTimeout(startMonitoring, 15000);
+    }
 }
 
 startMonitoring();
